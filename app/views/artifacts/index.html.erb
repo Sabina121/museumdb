@@ -1,20 +1,70 @@
-<h1>Listing Artifacts</h1>
+<%= render 'layouts/login' %>
 
-<%= link_to 'New artifact', new_artifact_path %>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th></th>
-    </tr>
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet"> 
 
-    <% @artifacts.each do |artifact| %>
-        <tr>
-            <td><%= artifact.name %></td>
-            <td><%= artifact.description %></td>
-            <td><%= link_to 'Show', artifact_path(artifact) %></td>
-            <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
-            <td><%= link_to 'Destroy', artifact_path(artifact), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
-    <% end %>
-</table>
+<nav class="navbar navbar-dark bg-dark">
+    <%= link_to 'Új műtárgy', new_artifact_path, :class =>"btn btn-dark" %>
+    <a class="navbar-brand">Műtárgyak listája</a>
+    
+    <form class="form-inline">
+        <%= form_tag(artifacts_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Keresés" %>
+            <%= submit_tag "Keresés", :name => nil, class: 'btn btn-dark' %>
+        <% end %>
+    </form>
+</nav>
+
+<% if @artifacts.blank? %>
+    <p>Az adatbázisban nem található <%= params[:search] %> kifejezés.</p>
+    <%= link_to 'Műtárgyak', artifacts_path, :class => "btn btn-light" %>
+<% end %>
+
+<div class="container-fluid">
+    <table class="table table-hover table-bordered table-responsive">
+        <thead class="thead-dark">
+            <div class = "row">
+                <tr>
+                    <th class = "col">Megnevezés</th></div>
+                    <th class = "col">Leltárszám</th></div>
+                    <th class = "col">Múzeum</th></div>
+                    <th class = "col">Gyűjtemény</th></div>
+                    <th class = "col">Korszak</th></div>
+                    <th class = "col">Készítő</th></div>
+                    <th class = "col">Mennyiség</th></div>
+                    <th class = "col">Tulajdonos</th></div>
+                    <th class = "col">Beszerzés</th></div>
+                    <th class = "col">Ár</th></div>
+                    <th class = "col">Beleltározta</th></div>
+                    <th class = "col">Revízió dátuma</th></div>
+                    <th class = "col">Revíziót végezte</th></div>
+                    <th class = "col">Leírás</th></div>
+                    <th class = "col">Műveletek</th></div>
+                </tr>
+            </div>
+        </thead>
+        
+        <div class = "row">
+            <% @artifacts.each do |artifact| %>
+                <tr>
+                <td><%= artifact.name %></td></div>
+                <td><%= artifact.inventory_number %></td></div>
+                <td><%= artifact.museum_name %></td></div>
+                <td><%= artifact.collection %></td></div>
+                <td><%= artifact.era %></td></div>
+                <td><%= artifact.creator %></td></div>
+                <td><%= artifact.quantity %></td></div>
+                <td><%= artifact.owner %></td></div>
+                <td><%= artifact.acquisition %></td></div>
+                <td><%= artifact.price %></td></div>
+                <td><%= artifact.inventory_by %></td></div>
+                <td><%= artifact.revision_date %></td></div>
+                <td><%= artifact.revision_by%></td></div>
+                <td><%= artifact.description %></td></div>
+                <td><%= link_to 'Nézet', artifact_path(artifact), :class => "btn btn-light" %><br>
+                        <%= link_to 'Szerkesztés', edit_artifact_path(artifact), :class => "btn btn-light" %><br>
+                        <%= link_to 'Törlés', artifact_path(artifact), method: :delete, data: {confirm: 'Biztos benne?'}, :class => "btn btn-light" %></td></div>
+                </tr>
+            <% end %>
+        </div>
+    </table>
+</div>

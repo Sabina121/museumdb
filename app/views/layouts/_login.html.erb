@@ -1,0 +1,11 @@
+
+<% if current_user %>
+    <%= current_user.username %><br>
+    <%= link_to 'Kilépés', destroy_user_session_path, method: :delete, :class => "btn btn-light" %>
+    <%= link_to 'Adatok módosítása', edit_user_registration_path, :class => "btn btn-light" %>
+<% else %>
+    <%= link_to 'Regisztráció', new_user_registration_path, :class =>"btn btn-light" %>
+    <%= link_to 'Bejelentkezés', new_user_session_path, :class => "btn btn-light" %>
+<% end %>
+
+

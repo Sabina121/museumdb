@@ -1,31 +1,70 @@
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
 <%= form_with model: @artifact, local: true do |form| %>
-
-    <% if @artifact.errors.any? %>
-        <div id= "error_explanation">
-            <h2>
-                <%= pluralize(@artifact.errors.count, "error") %>
-                prohibited this article from being saved:
-            </h2>
-            <ul>
-                <% @artifact.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-
+  <% if @artifact.errors.any? %>
+    <div id= "error_explanation">
+      <h2>
+        <%= pluralize(@artifact.errors.count, "error") %>
+        prohibited this article from being saved:
+      </h2>
+      <ul>
+        <% @artifact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class ="box">
     <p>
-        <%= form.label :name %><br>
-        <%= form.text_field :name %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Név' %>
     </p>
-
     <p>
-        <%= form.label :description %><br>
-        <%= form.text_area :description%>
+      <%= form.text_field :inventory_number, class: 'form-control', placeholder: "Leltárszám" %>
     </p>
-
     <p>
-        <%= form.submit :Save%>
+      <%= form.text_field :museum_name, class: 'form-control', placeholder: "Múzeum"  %>
     </p>
-    
+    <p>
+      <%= form.select :collection, options_for_select(['Vaskori Gyűjtemény', 'Római Gyűjtemény', 'Népvándorláskori Gyűjtemény', 'Középkori Gyűjtemény']),{}, class: "form-control" %>
+    </p>
+    <p>
+      <%= form.text_field :era, class: 'form-control', placeholder: "Keltezés" %>
+    </p>
+    <p>
+      <%= form.text_field :creator, class: 'form-control', placeholder: "Készítő" %>
+    </p>
+    <p>
+      <%= form.number_field :quantity, min: "1", class:'form-control', placeholder: "Mennyiség" %>
+    </p>
+    <p>
+      <%= form.text_field :owner, class: 'form-control', placeholder: "Tulajdonos" %>
+    </p>
+    <p>
+      <%= form.text_field :acquisition, class: 'form-control', placeholder: "Beszerzés" %>
+    </p>
+    <p>
+      <%= form.number_field :price, min: "0", class: 'form-control', placeholder: "Ár" %>
+    </p>
+    <p>
+      <%= form.text_field :inventory_by, class: 'form-control', placeholder: "Beleltározta" %>
+    </p>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Revízió dátuma</span>
+      </div>
+      <%= form.date_field :revision_date, class: 'form-control input-group date' %>
+    </div>
+    <p>
+      <%= form.text_field :revision_by, class: 'form-control', placeholder: "Revíziót végezte" %>
+    </p>
+    <p>
+      <%= form.text_area :description, class: 'form-control', placeholder: "Leírás"%>
+    </p>
+    <p>
+      <%= form.label :kép_hozzáadása %>
+      <%= form.file_field :image %>
+    </p>
+    <p>
+      <%= form.submit :Mentés, class: 'btn btn-info'%>
+    </p>
+  </div>
 <% end %>

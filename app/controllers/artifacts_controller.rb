@@ -1,7 +1,14 @@
 class ArtifactsController < ApplicationController
 
+    before_action :authenticate_user!, except: [:show, :index]
+
     def index
         @artifacts = Artifact.all
+        if params[:search]
+            @artifacts = Artifact.search(params[:search]).order("created_at DESC")
+          else
+            @artifacts = Artifact.all.order("created_at DESC")
+        end
     end
     
     def show
@@ -18,7 +25,7 @@ class ArtifactsController < ApplicationController
 
     def create
         @artifact = Artifact.new(artifact_params)
-
+        
         if @artifact.save
             redirect_to @artifact
         else
@@ -44,7 +51,8 @@ class ArtifactsController < ApplicationController
 
     private
         def artifact_params
-            params.require(:artifact).permit(:name, :description)
+            params.require(:artifact).permit(:name,:inventory_number, :museum_name, :collection, :era, :creator,
+            :quantity, :owner, :acquisition, :price, :inventory_by, :revision_date, :revision_by, :description, :image)
         end
 
 end

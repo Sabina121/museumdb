@@ -1,0 +1,53 @@
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h2>Adatok módosítása</h2>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+                <div class = "field">
+                  <p><%= f.label :felhasználónév %><br />
+                    <%= f.text_field :username %></p>
+                </div>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </div>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+                <div class="field">
+                  <%= f.label :Új_jelszó %> <i>(hagyja üresen, amennyiben nem akarja megváltoztatni)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password" %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> characters minimum</em>
+                  <% end %>
+                </div>
+                <div class="field">
+                  <%= f.label :jelszó_megerősítése %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                </div>
+                <div class="field">
+                  <%= f.label :jelszó %> <i>(a változtatások megerősítéséhez)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password" %>
+                </div>
+                <div class="actions">
+                  <%= f.submit "Frissítés", class: 'btn btn-info' %>
+                </div>
+              <% end %>
+              <h3>Fiók törlése</h3>
+              <p><%= button_to "Fiók megszüntetése", registration_path(resource_name), data: { confirm: "Biztos benne?" }, method: :delete, :class=> 'btn btn-info' %></p>
+              <%= link_to "Főmenü", :back, :class => "btn btn-light"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
