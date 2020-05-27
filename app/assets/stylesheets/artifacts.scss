@@ -1,13 +1,30 @@
 *{font-family: 'Muli', sans-serif;}
 
+
 .navbar-dark bg-dark {
     margin-bottom: 5px;
 }
 
 .title,.table {font-family: 'Muli', sans-serif;}
 
-.box{
-    position: relative;
-    width: 30rem;
-    margin: auto;
+.form{
+    display: flex;
 }
+
+.box-details{
+    width: 30em;
+    margin-left: 5em;
+    padding-right: 1em;
+}
+
+.description-box{
+    flex-grow: 1;
+    padding-left: 1em
+}
+
+.title{
+    position: relative;
+    margin-left: 1em;
+}
+
+

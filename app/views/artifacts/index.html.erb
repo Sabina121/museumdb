@@ -4,8 +4,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <%= link_to 'Új műtárgy', new_artifact_path, :class =>"btn btn-dark" %>
-    <a class="navbar-brand">Műtárgyak listája</a>
-    
+        <a class="navbar-brand">Műtárgyak listája</a>    
     <form class="form-inline">
         <%= form_tag(artifacts_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Keresés" %>
@@ -19,8 +18,8 @@
     <%= link_to 'Műtárgyak', artifacts_path, :class => "btn btn-light" %>
 <% end %>
 
-<div class="container-fluid">
-    <table class="table table-hover table-bordered table-responsive">
+<div class="overflow-x:auto;">
+    <table class="table table-hover table-bordered">
         <thead class="thead-dark">
             <div class = "row">
                 <tr>
@@ -46,23 +45,41 @@
         <div class = "row">
             <% @artifacts.each do |artifact| %>
                 <tr>
-                <td><%= artifact.name %></td></div>
-                <td><%= artifact.inventory_number %></td></div>
-                <td><%= artifact.museum_name %></td></div>
-                <td><%= artifact.collection %></td></div>
-                <td><%= artifact.era %></td></div>
-                <td><%= artifact.creator %></td></div>
-                <td><%= artifact.quantity %></td></div>
-                <td><%= artifact.owner %></td></div>
-                <td><%= artifact.acquisition %></td></div>
-                <td><%= artifact.price %></td></div>
-                <td><%= artifact.inventory_by %></td></div>
-                <td><%= artifact.revision_date %></td></div>
-                <td><%= artifact.revision_by%></td></div>
-                <td><%= artifact.description %></td></div>
-                <td><%= link_to 'Nézet', artifact_path(artifact), :class => "btn btn-light" %><br>
-                        <%= link_to 'Szerkesztés', edit_artifact_path(artifact), :class => "btn btn-light" %><br>
-                        <%= link_to 'Törlés', artifact_path(artifact), method: :delete, data: {confirm: 'Biztos benne?'}, :class => "btn btn-light" %></td></div>
+                    <td><%= artifact.name %></td></div>
+                    <td><%= artifact.inventory_number %></td></div>
+                    <td><%= artifact.museum_name %></td></div>
+                    <td><%= artifact.collection %></td></div>
+                    <td><%= artifact.era %></td></div>
+                    <td><%= artifact.creator %></td></div>
+                    <td><%= artifact.quantity %></td></div>
+                    <td><%= artifact.owner %></td></div>
+                    <td><%= artifact.acquisition %></td></div>
+                    <td><%= artifact.price %></td></div>
+                    <td><%= artifact.inventory_by %></td></div>
+                    <td><%= artifact.revision_date %></td></div>
+                    <td><%= artifact.revision_by%></td></div>
+                    <td><%= artifact.description %></td></div>
+                    <td>
+                        <%= link_to artifact_path(artifact) do %>
+                            <svg class="bi bi-eye-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                        <% end %>
+
+                        <%= link_to edit_artifact_path(artifact) do %>
+                            <svg class="bi bi-pencil" width="2em" height="2em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+                            <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+                            </svg>
+                        <% end %><br>
+                        
+                        <%= link_to artifact_path(artifact), method: :delete, data: {confirm: 'Biztosan törölni szeretné a kiválasztott tárgyat?'} do %>
+                            <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
         </div>

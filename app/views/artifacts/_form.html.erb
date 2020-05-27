@@ -1,4 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
+
 <%= form_with model: @artifact, local: true do |form| %>
   <% if @artifact.errors.any? %>
     <div id= "error_explanation">
@@ -13,7 +14,8 @@
       </ul>
     </div>
   <% end %>
-  <div class ="box">
+  <div class="form">
+  <div class ="box-details">
     <p>
       <%= form.text_field :name, class: 'form-control', placeholder: 'Név' %>
     </p>
@@ -56,15 +58,23 @@
     <p>
       <%= form.text_field :revision_by, class: 'form-control', placeholder: "Revíziót végezte" %>
     </p>
+  </div>
+  <div class="description-box">
     <p>
-      <%= form.text_area :description, class: 'form-control', placeholder: "Leírás"%>
+      <%= form.text_area :description, size: "30x5", class: 'form-control', placeholder: "Leírás"%>
     </p>
     <p>
-      <%= form.label :kép_hozzáadása %>
-      <%= form.file_field :image %>
+      <% if @artifact.image.attached? == false %>
+        <%= form.label :kép_hozzáadása %>
+        <%= form.file_field :image %>
+      <% else @artifact.image.previewable? %>
+        <%= image_tag(@artifact.image, style: "width:60%") %>
+      <% end %>
     </p>
     <p>
       <%= form.submit :Mentés, class: 'btn btn-info'%>
     </p>
+    <%= link_to 'Műtárgyak listája', artifacts_path, :class => "btn btn-light" %>
+  </div>
   </div>
 <% end %>
