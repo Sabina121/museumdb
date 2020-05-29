@@ -27,4 +27,18 @@
     margin-left: 1em;
 }
 
+.col {
+    min-width: 10em;
+}
+
+.col07 .col10 .col15{
+    min-width: 1em;
+}
+
+.table td.row14 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10em;
+}
 

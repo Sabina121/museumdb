@@ -1,6 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
 
-<table>
 <p>
     <strong>Név:</strong>
     <%= @artifact.name %>
@@ -78,7 +77,6 @@
         <%= image_tag(@artifact.image, style: "width:20%") %>
     <% end %>
 </p>
-</table>
 
 <%= link_to 'Szerkesztés', edit_artifact_path(@artifact), :class => "btn btn-light" %>
 <%= link_to 'Műtárgyak listája', artifacts_path, :class => "btn btn-light" %>
