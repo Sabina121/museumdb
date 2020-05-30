@@ -1,27 +1,25 @@
 <%= render 'layouts/login' %>
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
 
-<div class="navbarbox">
-<nav class="navbar navbar-dark bg-dark" id="navbarid">
-  <%= link_to 'Új műtárgy', new_artifact_path, :class =>"btn btn-dark" %>
-  <a class="navbar-brand">Műtárgyak listája</a>
-  <form class="form-inline">
-    <%= form_tag(artifacts_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Keresés" %>
-      <%= submit_tag "Keresés", :name => nil, class: 'btn btn-dark' %>
-    <% end %>
-  </form>
+<nav  id="navbarid" class="navbar navbar-dark bg-dark">
+	<div id="conatainerid" class="container">
+		<%= link_to 'Új műtárgy', new_artifact_path, :class =>"btn btn-dark" %>
+    <a class="navbar-brand">Műtárgyak listája</a>    
+    <form class="form-inline">
+      <%= form_tag(artifacts_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Keresés" %>
+        <%= submit_tag "Keresés", :name => nil, class: 'btn btn-dark' %>
+      <% end %>
+    </form>
 </nav>
-</div>
-
 
 <% if @artifacts.blank? %>
   <p>Az adatbázisban nem található <%= params[:search] %> kifejezés.</p>
   <%= link_to 'Műtárgyak', artifacts_path, :class => "btn btn-light" %>
 <% end %>
 
-<div class="overflow-x:auto;">
-  <table class="table table-hover table-bordered">
+<div class="overflow-x:auto">
+  <table style="width: auto;" class="table table-hover table-bordered">
     <thead class="thead-dark">
       <tr>
         <th class="col">Megnevezés</th>

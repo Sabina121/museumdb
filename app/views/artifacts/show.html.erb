@@ -1,82 +1,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
 
-<p>
+<div>
     <strong>Név:</strong>
     <%= @artifact.name %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Leltárszám:</strong>
     <%= @artifact.inventory_number %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Múzeum:</strong>
     <%= @artifact.museum_name %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Gyűjtemény:</strong>
     <%= @artifact.collection %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Korszak:</strong>
     <%= @artifact.era %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Készítő:</strong>
     <%= @artifact.creator %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Mennyiség:</strong>
     <%= @artifact.quantity %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Tulajdonos:</strong>
     <%= @artifact.owner %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Beszerzés:</strong>
     <%= @artifact.acquisition %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Ár:</strong>
     <%= @artifact.price %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Beleltározta:</strong>
     <%= @artifact.inventory_by %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Revízió dátuma:</strong>
     <%= @artifact.revision_date %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Revíziót végezte:</strong>
     <%= @artifact.revision_by %>
-</p>
+</div>
 
-<p>
+<div>
     <strong>Leírás:</strong>
     <%= @artifact.description %>
-</p>
+</div>
 
-<p>
+<div>
     <% if @artifact.image.attached? == false %>
         <p>Nincs hozzácsatolt kép.</p>
     <% else @artifact.image.previewable? %>
         <%= image_tag(@artifact.image, style: "width:20%") %>
     <% end %>
-</p>
+</div>
 
 <%= link_to 'Szerkesztés', edit_artifact_path(@artifact), :class => "btn btn-light" %>
 <%= link_to 'Műtárgyak listája', artifacts_path, :class => "btn btn-light" %>
