@@ -1,6 +1,8 @@
 <%= render 'layouts/login' %>
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap" rel="stylesheet">
-<nav class="navbar navbar-dark bg-dark">
+
+<div class="navbarbox">
+<nav class="navbar navbar-dark bg-dark" id="navbarid">
   <%= link_to 'Új műtárgy', new_artifact_path, :class =>"btn btn-dark" %>
   <a class="navbar-brand">Műtárgyak listája</a>
   <form class="form-inline">
@@ -10,10 +12,14 @@
     <% end %>
   </form>
 </nav>
+</div>
+
+
 <% if @artifacts.blank? %>
   <p>Az adatbázisban nem található <%= params[:search] %> kifejezés.</p>
   <%= link_to 'Műtárgyak', artifacts_path, :class => "btn btn-light" %>
 <% end %>
+
 <div class="overflow-x:auto;">
   <table class="table table-hover table-bordered">
     <thead class="thead-dark">
