@@ -47,3 +47,20 @@
 #containerid{
     margin-left: 0px;
 }
+
+.container-show{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+}
+
+.box-details-show{
+    flex: auto;
+    padding-left: 2em;
+    width: 30em;
+}
+
+.description-box-show{
+    width: 100%;
+    padding-left: 3em;
+}
