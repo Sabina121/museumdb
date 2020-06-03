@@ -52,8 +52,9 @@
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Revízió dátuma</span>
+        <%= form.date_field :revision_date, class: 'form-control input-group date' %>
       </div>
-      <%= form.date_field :revision_date, class: 'form-control input-group date' %>
+      
     </div>
     <p>
       <%= form.text_field :revision_by, class: 'form-control', placeholder: "Revíziót végezte" %>
@@ -68,14 +69,15 @@
         <%= form.label :kép_hozzáadása %>
         <%= form.file_field :image %>
       <% else @artifact.image.previewable? %>
-        <%= image_tag(@artifact.image, style: "width:60%") %>
+        <%= image_tag(@artifact.image, style: "height: 30em") %>
+        <%= link_to 'Kép eltávolítása', delete_image_attachment_artifact_url(@artifact.image.id),
+            method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-light" %>
       <% end %>
     </p>
     <p>
       <%= form.submit :Mentés, class: 'btn btn-info'%>
     </p>
     <%= link_to 'Műtárgyak listája', artifacts_path, :class => "btn btn-light" %>
-    <%= link_to 'Nézet', artifact_path, class: 'btn btn-light' %>
   </div>
   </div>
 <% end %>

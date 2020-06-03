@@ -49,6 +49,12 @@ class ArtifactsController < ApplicationController
         redirect_to artifacts_path
     end
 
+    def delete_image_attachment
+        @image = ActiveStorage::Attachment.find(params[:id])
+        @image.purge
+        redirect_back(fallback_location: request.referer)
+    end
+
     private
         def artifact_params
             params.require(:artifact).permit(:name,:inventory_number, :museum_name, :collection, :era, :creator,

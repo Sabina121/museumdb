@@ -66,21 +66,18 @@
       <%= @artifact.revision_by %>
     </div>
     <br>
-    </div>
-<div class="description-box-show">
+  </div>
+  <div class="description-box-show">
     <div>
       <strong>Leírás:</strong>
       <%= @artifact.description %>
     </div>
     <br>
-  
-  
-  
     <div>
       <% if @artifact.image.attached? == false %>
         <p>Nincs hozzácsatolt kép.</p>
       <% else @artifact.image.previewable? %>
-        <%= image_tag(@artifact.image, style: "width:20%") %>
+        <%= image_tag(@artifact.image, style: "width:40%") %>
       <% end %>
     </div>
   </div>
