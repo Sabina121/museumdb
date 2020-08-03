@@ -15,11 +15,10 @@
 
 <% if @artifacts.blank? %>
   <p>Az adatbázisban nem található <%= params[:search] %> kifejezés.</p>
-  <%= link_to 'Műtárgyak', artifacts_path, :class => "btn btn-light" %>
 <% end %>
 
 <div class="overflow-x:auto">
-  <table style="width: auto;" class="table table-hover table-bordered">
+  <table style="width: auto;" id="tableid", class="table table-hover table-bordered">
     <thead class="thead-dark">
       <tr>
         <th class="col">Megnevezés</th>
@@ -79,4 +78,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= link_to 'Főlista', artifacts_path, :class => "btn btn-light" %>
 </div>
